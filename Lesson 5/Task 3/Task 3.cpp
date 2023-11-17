@@ -15,7 +15,12 @@ public:
     void get_sides_count() {
         std::cout << "Количество сторон: " << sides_count << std::endl;
     }
-
+    virtual void get_sides() {};
+    virtual void get_angle() {};
+    void print_info() {
+        get_sides();
+        get_angle();
+    }
 
     virtual bool check() {
         if (ang_sum == 180) {
@@ -44,11 +49,11 @@ public:
     int ang_sum = ang_X + ang_Y + ang_Z;
 
 
-    void get_sides() {
+    void get_sides() override {
         std::cout << "Стороны: " << "A = " << side_a << " B = " << side_b << " C = " << side_c << std::endl;
     }
 
-    void get_angle() {
+    void get_angle() override {
         std::cout << "Углы: " << "X = " << ang_X << " Y = " << ang_Y << " Z = " << ang_Z << std::endl << std::endl;
     }
 
@@ -118,11 +123,11 @@ public:
     double ang_Z = 75;
     int ang_sum = ang_W + ang_X + ang_Y + ang_Z;
 
-    void get_sides() {
+    void get_sides() override {
         std::cout << "Стороны: " << "A = " << side_a << " B = " << side_b << " C = " << side_c << " D = " << side_d << std::endl;
     }
 
-    void get_angle() {
+    void get_angle() override {
         std::cout << "Углы: " << "W = " << ang_W << " X = " << ang_X << " Y = " << ang_Y << " Z = " << ang_Z << std::endl << std::endl;
     }
     bool check() override {
@@ -195,8 +200,7 @@ int main() {
     tri.get_name();
     tri.check();
     tri.get_sides_count();
-    tri.get_sides();
-    tri.get_angle();
+    tri.print_info();
 
     Isosceles_Triangle isos;
     isos.name = "Равнобедренный треугольник: ";
@@ -204,8 +208,7 @@ int main() {
     Triangle* par_isos = &isos;
     par_isos->check();
     isos.get_sides_count();
-    isos.get_sides();
-    isos.get_angle();
+    isos.print_info();
 
 
     Equilateral_Triangle equi;
@@ -214,8 +217,7 @@ int main() {
     Triangle* par_equi = &equi;
     par_equi->check();
     equi.get_sides_count();
-    equi.get_sides();
-    equi.get_angle();
+    equi.print_info();
 
     Right_Triangle right;
     right.name = "Прямоугольный треугольник: ";
@@ -223,16 +225,14 @@ int main() {
     Triangle* par_right = &right;
     par_right->check();
     right.get_sides_count();
-    right.get_sides();
-    right.get_angle();
+    right.print_info();
 
     Quadrilateral quad;
     quad.name = "Четырехугольник: ";
     quad.get_name();
     quad.check();
     quad.get_sides_count();
-    quad.get_sides();
-    quad.get_angle();
+    quad.print_info();
 
     Rectangle rect;
     rect.name = "Прямоугольник: ";
@@ -240,8 +240,7 @@ int main() {
     Quadrilateral* par_rect = &rect;
     par_rect->check();
     rect.get_sides_count();
-    rect.get_sides();
-    rect.get_angle();
+    rect.print_info();
 
     Square square;
     square.name = "Квадрат: ";
@@ -249,8 +248,7 @@ int main() {
     Quadrilateral* par_square = &square;
     par_square->check();
     square.get_sides_count();
-    square.get_sides();
-    square.get_angle();
+    square.print_info();
 
     Parallelogram paral;
     paral.name = "Параллелограм: ";
@@ -258,8 +256,7 @@ int main() {
     Quadrilateral* par_paral = &paral;
     par_paral->check();
     paral.get_sides_count();
-    paral.get_sides();
-    paral.get_angle();
+    paral.print_info();
 
     Rhombus diamond;
     diamond.name = "Ромб: ";
@@ -267,8 +264,7 @@ int main() {
     Quadrilateral* par_diamond = &diamond;
     par_diamond->check();
     diamond.get_sides_count();
-    diamond.get_sides();
-    diamond.get_angle();
+    diamond.print_info();
 
     return 0;
 

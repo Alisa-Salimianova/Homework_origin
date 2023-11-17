@@ -1,7 +1,6 @@
 ﻿#include <iostream>
 #include <cstring>
 
-
 class Figure {
 public:
 	int sides_count;
@@ -9,6 +8,13 @@ public:
 
 	void get_name() {
 		std::cout << name << std::endl;
+	}
+
+	virtual void get_sides() {}
+	virtual void get_angle() {}
+	void print_info() {
+		get_sides();
+		get_angle();
 	}
 };
 
@@ -24,11 +30,11 @@ public:
 	double ang_Y = 40;
 	double ang_Z = 60;
 
-	void get_sides() {
+	void get_sides() override {
 		std::cout << "Стороны: " << "A = " << side_a << " B = " << side_b << " C = " << side_c << std::endl;
 	}
 
-	void get_angle() {
+	void get_angle() override {
 		std::cout << "Углы: " << "X = " << ang_X << " Y = " << ang_Y << " Z = " << ang_Z << std::endl << std::endl;
 	}
 
@@ -83,11 +89,11 @@ public:
 	double ang_Y = 55;
 	double ang_Z = 75;
 
-	void get_sides() {
+	void get_sides() override {
 		std::cout << "Стороны: " << "A = " << side_a << " B = " << side_b << " C = " << side_c << " D = " << side_d << std::endl;
 	}
 
-	void get_angle() {
+	void get_angle() override {
 		std::cout << "Углы: " << "W = " << ang_W << " X = " << ang_X << " Y = " << ang_Y << " Z = " << ang_Z << std::endl << std::endl;
 	}
 
@@ -135,60 +141,53 @@ public:
 	}
 };
 
+
+
 int main() {
 	Triangle tri;
 	tri.name = "Треугольник: ";
 	tri.get_name();
-	tri.get_sides();
-	tri.get_angle();
+	tri.print_info();
 
 	Isosceles_Triangle isos;
 	isos.name = "Равнобедренный треугольник: ";
 	isos.get_name();
-	isos.get_sides();
-	isos.get_angle();
+	isos.print_info();
 
 	Equilateral_Triangle equi;
 	equi.name = "Равносторонний треугольник: ";
 	equi.get_name();
-	equi.get_sides();
-	equi.get_angle();
+	equi.print_info();
 
 	Right_Triangle right;
 	right.name = "Прямоугольный треугольник: ";
 	right.get_name();
-	right.get_sides();
-	right.get_angle();
+	right.print_info();
 
 	Quadrilateral quad;
 	quad.name = "Четырехугольник: ";
 	quad.get_name();
-	quad.get_sides();
-	quad.get_angle();
+	quad.print_info();
 
 	Rectangle rect;
 	rect.name = "Прямоугольник: ";
 	rect.get_name();
-	rect.get_sides();
-	rect.get_angle();
+	rect.print_info();
 
 	Square square;
 	square.name = "Квадрат: ";
 	square.get_name();
-	square.get_sides();
-	square.get_angle();
+	square.print_info();
 
 	Parallelogram paral;
 	paral.name = "Параллелограм: ";
 	paral.get_name();
-	paral.get_sides();
-	paral.get_angle();
+	paral.print_info();
 
 	Rhombus diamond;
 	diamond.name = "Ромб: ";
 	diamond.get_name();
-	diamond.get_sides();
-	diamond.get_angle();
+	diamond.print_info();
 
 	return 0;
 
